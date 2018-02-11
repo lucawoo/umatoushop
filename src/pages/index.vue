@@ -23,6 +23,10 @@
           </router-link>
         </ul>
       </div>
+      <div class="airFlight fly">
+        <h2>3D飞行</h2>
+
+      </div>
     </div>
     <div class="index-right">
       <slide-show :slides="slides"></slide-show>
@@ -247,7 +251,7 @@
     width: 900px;
   }
 
-  .index-left-block {
+  .index-left-block,.airFlight {
     margin: 15px;
     background: #fff;
     box-shadow: 0 0 1px #ddd;
@@ -275,7 +279,7 @@
   }
 
   .index-left-block li {
-    padding: 5px;
+    padding: 10px;
   }
   .index-left-block li:hover {
     cursor: pointer;
@@ -331,7 +335,7 @@
     margin-top: 20px;
   }
 
-  .lastest-news {
+  .lastest-news,.fly {
     min-height: 212px;
   }
 
