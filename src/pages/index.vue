@@ -23,10 +23,6 @@
           </router-link>
         </ul>
       </div>
-      <div class="airFlight fly">
-        <h2>3D飞行</h2>
-
-      </div>
     </div>
     <div class="index-right">
       <slide-show :slides="slides"></slide-show>

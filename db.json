@@ -23,12 +23,12 @@
   ],
   "login": [
     {
-      "id" : 1,
+      "id": 1,
       "username": "zl46547@umatou.com",
       "password": "46547"
     },
     {
-      "id" : 2,
+      "id": 2,
       "username": "tlj46535@umatou.com",
       "password": "46535"
     },
@@ -54,25 +54,29 @@
           "name": "牛肉蛋花粥",
           "path": "zou1",
           "price": 8,
-          "src": "/static/images/zou1.jpg"
+          "src": "http://www.dfjb.com.cn/ImgFile/160815/082051704_632852.png",
+          "bigSrc":"http://www.dfjb.com.cn/ImgFile/160815/082045_428699.jpg"
         },
         {
           "name": "皮蛋瘦肉粥",
           "path": "zou2",
           "price": 8,
-          "src": "/static/images/zou2.jpg'"
+          "src": "/static/images/zou2.jpg'",
+          "bigSrc":"http://www.dfjb.com.cn/ImgFile/120201/171404_605076.jpg"
         },
         {
           "name": "蜜豆杂粮粥",
           "path": "zou3",
           "price": 6,
-          "src": "/static/images/zou3.jpg"
+          "src": "/static/images/zou3.jpg",
+          "bigSrc":"http://www.dfjb.com.cn/ImgFile/131210/174432_425481.jpg"
         },
         {
           "name": "雪笋嫩鸡粥",
           "path": "zou4",
           "price": 6,
-          "src": "/static/images/zou4.jpg'"
+          "src": "/static/images/zou4.jpg",
+          "bigSrc":"http://www.dfjb.com.cn/ImgFile/121104/220819_334908.jpg"
         }
       ]
     },
@@ -82,17 +86,23 @@
         {
           "name": "鲜汤小笼",
           "path": "zd1",
-          "price": 12
+          "price": 12,
+          "src": "http://www.dfjb.com.cn/ImgFile/120711/135959785_021398.png",
+          "bigSrc":"http://www.dfjb.com.cn/ImgFile/120711/135950_468430.jpg"
         },
         {
           "name": "鲜肉包",
           "path": "zd2",
-          "price": 2
+          "price": 2,
+          "src": "http://www.dfjb.com.cn/ImgFile/120405/141022205_819956.png",
+          "bigSrc":"http://www.dfjb.com.cn/ImgFile/120405/141020_210390.jpg"
         },
         {
           "name": "香菇荠菜包",
           "path": "zd3",
-          "price": 1.5
+          "price": 1.5,
+          "src": "http://www.dfjb.com.cn/ImgFile/120405/141047956_587566.png",
+          "bigSrc":"http://www.dfjb.com.cn/ImgFile/120405/141043_635435.jpg"
         }
       ]
     },
@@ -102,37 +112,51 @@
         {
           "name": "辣肉汤面",
           "path": "mt1",
-          "price": 12
+          "price": 12,
+          "src": "http://www.dfjb.com.cn/ImgFile/160815/082204868_570932.png",
+          "bigSrc":"http://www.dfjb.com.cn/ImgFile/160815/082200_083110.jpg"
         },
         {
           "name": "黑椒小牛排拌面",
           "path": "mt2",
-          "price": 15
+          "price": 15,
+          "src": "http://www.dfjb.com.cn/ImgFile/160815/095210870_666774.png",
+          "bigSrc":"http://www.dfjb.com.cn/ImgFile/160815/095206_485384.jpg"
         },
         {
           "name": "小鸡炖菌菇汤面",
           "path": "mt3",
-          "price": 15
+          "price": 15,
+          "src": "http://www.dfjb.com.cn/ImgFile/160815/100338738_034817.png",
+          "bigSrc":"http://www.dfjb.com.cn/ImgFile/160815/100335_493082.jpg"
         },
         {
           "name": "雪菜肉丝汤面",
           "path": "mt4",
-          "price": 10
+          "price": 10,
+          "src": "http://www.dfjb.com.cn/ImgFile/160815/101944411_959899.png",
+          "bigSrc":"http://www.dfjb.com.cn/ImgFile/160815/101940_231759.jpg"
         },
         {
           "name": "红烧半筋半肉面",
           "path": "mt5",
-          "price": 13
+          "price": 13,
+          "src": "http://www.dfjb.com.cn/ImgFile/170219/225543988_394330.png",
+          "bigSrc":"http://www.dfjb.com.cn/ImgFile/170219/225537_573250.jpg"
         },
         {
           "name": "原汁鸡汤砂锅面",
           "path": "mt6",
-          "price": 15
+          "price": 15,
+          "src": "http://www.dfjb.com.cn/ImgFile/161130/205244186_802197.png",
+          "bigSrc":"http://www.dfjb.com.cn/ImgFile/161130/205227_364534.jpg"
         },
         {
           "name": "鲜肉小馄饨",
           "path": "mt7",
-          "price": 12
+          "price": 12,
+          "src": "http://www.dfjb.com.cn/ImgFile/130526/223316664_931469.png",
+          "bigSrc":"http://www.dfjb.com.cn/ImgFile/130526/223313_921852.jpg"
         }
       ]
     },
@@ -142,22 +166,30 @@
         {
           "name": "鱼香肉丝饭",
           "path": "fan1",
-          "price": "22"
+          "price": "22",
+          "src": "http://www.dfjb.com.cn/ImgFile/160815/082423131_173917.png",
+          "bigSrc":"http://www.dfjb.com.cn/ImgFile/160815/082420_794519.jpg"
         },
         {
           "name": "精炖牛肉煲",
           "path": "fan2",
-          "price": 25
+          "price": 25,
+          "src": "http://www.dfjb.com.cn/ImgFile/131028/111625883_974056.png",
+          "bigSrc":"http://www.dfjb.com.cn/ImgFile/131028/094220_446038.jpg"
         },
         {
           "name": "黄金咖喱猪扒饭",
           "path": "fan3",
-          "price": 20
+          "price": 20,
+          "src": "http://www.dfjb.com.cn/ImgFile/120201/173639179_453199.png",
+          "bigSrc":"http://www.dfjb.com.cn/ImgFile/120201/173637_696589.jpg"
         },
         {
           "name": "狠大照烧烤鸡腿饭",
           "path": "fan4",
-          "price": 22
+          "price": 22,
+          "src": "http://www.dfjb.com.cn/ImgFile/131201/224023861_176694.png",
+          "bigSrc":"http://www.dfjb.com.cn/ImgFile/131201/224017_137188.jpg"
         }
       ]
     },
@@ -167,22 +199,30 @@
         {
           "name": "酸辣海带丝",
           "path": "xc1",
-          "price": 9
+          "price": 9,
+          "src": "http://www.dfjb.com.cn/ImgFile/120201/180742834_300663.png",
+          "bigSrc":"http://www.dfjb.com.cn/ImgFile/120201/180740_798119.jpg"
         },
         {
           "name": "凉拌黑木耳",
           "path": "xc2",
-          "price": 8
+          "price": 8,
+          "src": "http://www.dfjb.com.cn/ImgFile/120201/180818830_549807.png",
+          "bigSrc":"http://www.dfjb.com.cn/ImgFile/120201/180814_202722.jpg"
         },
         {
           "name": "香菇芙蓉蛋",
           "path": "xc3",
-          "price": 8
+          "price": 8,
+          "src": "http://www.dfjb.com.cn/ImgFile/120201/180854694_037648.png",
+          "bigSrc":"http://www.dfjb.com.cn/ImgFile/120201/180852_011629.jpg"
         },
         {
           "name": "糖醋黄瓜",
           "path": "xc4",
-          "price": 4
+          "price": 4,
+          "src": "http://www.dfjb.com.cn/ImgFile/120916/215423174_942160.png",
+          "bigSrc":"http://www.dfjb.com.cn/ImgFile/120916/215143_745460.jpg"
         }
       ]
     },
@@ -192,12 +232,16 @@
         {
           "name": "福州鱼丸汤",
           "path": "tang1",
-          "price": 12
+          "price": 12,
+          "src": "http://www.dfjb.com.cn/ImgFile/120624/201305896_868551.png",
+          "bigSrc":"http://www.dfjb.com.cn/ImgFile/120624/201258_085608.jpg"
         },
         {
           "name": "原蛊虫草花炖鸡汤",
           "path": "tang2",
-          "price": 15
+          "price": 15,
+          "src": "http://www.dfjb.com.cn/ImgFile/121104/222533915_645873.png",
+          "bigSrc":"http://www.dfjb.com.cn/ImgFile/160727/104143_579005.jpg"
         }
       ]
     },
@@ -207,52 +251,72 @@
         {
           "name": "荷包蛋",
           "path": "xc1",
-          "price": 3
+          "price": 3,
+          "src": "http://www.dfjb.com.cn/ImgFile/120201/173129278_489598.png",
+          "bigSrc":"http://www.dfjb.com.cn/ImgFile/120201/173126_976913.jpg"
         },
         {
           "name": "脆安心油条",
           "path": "xc2",
-          "price": 2
+          "price": 2,
+          "src": "http://www.dfjb.com.cn/ImgFile/160815/102242517_409426.png",
+          "bigSrc":"http://www.dfjb.com.cn/ImgFile/160815/102238_442645.jpg"
         },
         {
           "name": "红豆派",
           "path": "xc3",
-          "price": 6
+          "price": 6,
+          "src": "http://www.dfjb.com.cn/ImgFile/140217/101355591_711876.png",
+          "bigSrc":"http://www.dfjb.com.cn/ImgFile/140217/101351_673684.jpg"
         },
         {
           "name": "台式串串肠",
           "path": "xc4",
-          "price": 3
+          "price": 3,
+          "src": "http://www.dfjb.com.cn/ImgFile/130526/224337008_933327.png",
+          "bigSrc":"http://www.dfjb.com.cn/ImgFile/130526/224333_809254.jpg"
         },
         {
           "name": "黑糖珍珠红豆沙",
           "path": "xc5",
-          "price": 5
+          "price": 5,
+          "src": "http://www.dfjb.com.cn/ImgFile/160815/094614472_819805.png",
+          "bigSrc":"http://www.dfjb.com.cn/ImgFile/160815/094610_299979.jpg"
         },
         {
           "name": "葡式蛋挞",
           "path": "xc6",
-          "price": 4
+          "price": 4,
+          "src": "http://www.dfjb.com.cn/ImgFile/140413/214402137_126312.png",
+          "bigSrc":"http://www.dfjb.com.cn/ImgFile/140413/214356_871813.jpg"
         },
         {
           "name": "台式盐酥鸡",
           "path": "xc7",
-          "price": 8
+          "price": 8,
+          "src": "http://www.dfjb.com.cn/ImgFile/130526/224356321_527561.png",
+          "bigSrc":"http://www.dfjb.com.cn/ImgFile/130526/224350_591259.jpg"
         },
         {
           "name": "安心杂粮煎饼",
           "path": "xc8",
-          "price": 6
+          "price": 6,
+          "src": "http://www.dfjb.com.cn/ImgFile/160815/082321511_875202.png",
+          "bigSrc":"http://www.dfjb.com.cn/ImgFile/160815/082321_605270.jpg"
         },
         {
           "name": "烤肉煎蛋烧饼",
           "path": "xc9",
-          "price": 4
+          "price": 4,
+          "src": "http://www.dfjb.com.cn/ImgFile/161125/180539553_954183.png",
+          "bigSrc":"http://www.dfjb.com.cn/ImgFile/161125/180441_762297.jpg"
         },
         {
           "name": "肉松油条鸡蛋饭团",
           "path": "xc10",
-          "price": 7
+          "price": 7,
+          "src": "http://www.dfjb.com.cn/ImgFile/160815/102144750_143763.png",
+          "bigSrc":"http://www.dfjb.com.cn/ImgFile/160815/102141_908196.jpg"
         }
       ]
     },
@@ -262,37 +326,51 @@
         {
           "name": "冰鲜柠檬红茶",
           "path": "yp1",
-          "price": 8
+          "price": 8,
+          "src": "http://www.dfjb.com.cn/ImgFile/120711/164612893_581931.png",
+          "bigSrc":"http://www.dfjb.com.cn/ImgFile/120711/164603_576505.jpg"
         },
         {
           "name": "久珍果汁",
           "path": "yp2",
-          "price": 8
+          "price": 8,
+          "src": "http://www.dfjb.com.cn/ImgFile/120711/164806071_823501.png",
+          "bigSrc":"http://www.dfjb.com.cn/ImgFile/120711/164905_800284.jpg"
         },
         {
           "name": "醇豆浆",
           "path": "yp3",
-          "price": 6
+          "price": 6,
+          "src": "http://www.dfjb.com.cn/ImgFile/120916/222047841_445597.png",
+          "bigSrc":"http://www.dfjb.com.cn/ImgFile/120916/222036_769825.jpg"
         },
         {
           "name": "冰爽乌梅汁",
           "path": "yp4",
-          "price": 10
+          "price": 10,
+          "src": "http://www.dfjb.com.cn/ImgFile/130526/223800587_359635.png",
+          "bigSrc":"http://www.dfjb.com.cn/ImgFile/130526/223749_885503.jpg"
         },
         {
           "name": "招牌奶茶",
           "path": "yp5",
-          "price": 12
+          "price": 12,
+          "src": "http://www.dfjb.com.cn/ImgFile/130527/104607_246382.jpg",
+          "bigSrc":"http://www.dfjb.com.cn/ImgFile/130526/224628269_885790.png"
         },
         {
           "name": "芒果大果粒沁饮",
           "path": "yp6",
-          "price": 12
+          "price": 12,
+          "src": "http://www.dfjb.com.cn/ImgFile/140622/232923970_884501.png",
+          "bigSrc":"http://www.dfjb.com.cn/ImgFile/140622/232916_947814.jpg"
         },
         {
           "name": "青金桔柠檬沁饮",
           "path": "yp7",
-          "price": 8
+          "price": 8,
+          "src": "http://www.dfjb.com.cn/ImgFile/160815/101630565_639695.png",
+          "bigSrc":"http://www.dfjb.com.cn/ImgFile/160815/101627_223865.jpg"
         }
       ]
     }
@@ -13476,7 +13554,7 @@
       "label": "其他"
     }
   ],
-  "tableData":[
+  "tableData": [
     {
       "orderDate": "2018-01-10",
       "orderName": "皮蛋瘦肉粥",

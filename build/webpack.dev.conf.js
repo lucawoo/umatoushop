@@ -7,11 +7,11 @@ const baseWebpackConfig = require('./webpack.base.conf')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
-//首先
+// 首先
 const express = require('express')
 const app = express()
-var appData = require('../db.json')//加载本地数据文件
-var newsList = appData.getNewsList//获取对应的本地数据
+var appData = require('../db.json')// 加载本地数据文件
+var newsList = appData.getNewsList// 获取对应的本地数据
 var login = appData.login
 var productList = appData.productList
 var createOrder = appData.createOrder
@@ -46,47 +46,47 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     proxy: config.dev.proxyTable,
     quiet: true, // necessary for FriendlyErrorsPlugin
     watchOptions: {
-      poll: config.dev.poll,
+      poll: config.dev.poll
     },
 
-    //然后找到devServer,在里面添加
+    // 然后找到devServer,在里面添加
     before (app) {
       app.get('/api/getNewsList', (req, res) => {
         res.json({
           errno: 0,
           getNewsListRes: newsList
-        })//接口返回json数据，上面配置的数据newsList就赋值给data请求后调用
-      }),
-        app.get('/api/login', (req, res) => {
-          res.json({
-            errno: 0,
-            usersDataRes: login
-          })
-        }),
-        app.get('/api/productList', (req, res) => {
-          res.json({
-            errno: 0,
-            getProductListRes: productList
-          })
-        }),
-        app.get('/api/getCities', (req, res) => {
-          res.json({
-            errno: 0,
-            getCitiesRes: cities
-          })
-        }),
-        app.get('/api/createOrder', (req, res) => {
-          res.json({
-            errno: 0,
-            data: createOrder
-          })
+        })// 接口返回json数据，上面配置的数据newsList就赋值给data请求后调用
+      })
+      app.get('/api/login', (req, res) => {
+        res.json({
+          errno: 0,
+          usersDataRes: login
         })
-        app.get('/api/getTableData', (req, res) => {
-          res.json({
-            errno: 0,
-            tableDataRes: tableData
-          })
+      })
+      app.get('/api/productList', (req, res) => {
+        res.json({
+          errno: 0,
+          getProductListRes: productList
         })
+      })
+      app.get('/api/getCities', (req, res) => {
+        res.json({
+          errno: 0,
+          getCitiesRes: cities
+        })
+      })
+      app.get('/api/createOrder', (req, res) => {
+        res.json({
+          errno: 0,
+          data: createOrder
+        })
+      })
+      app.get('/api/getTableData', (req, res) => {
+        res.json({
+          errno: 0,
+          tableDataRes: tableData
+        })
+      })
     }
   },
   plugins: [
@@ -125,7 +125,6 @@ module.exports = new Promise((resolve, reject) => {
           ? utils.createNotifierCallback()
           : undefined
       }))
-
       resolve(devWebpackConfig)
     }
   })

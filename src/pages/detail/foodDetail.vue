@@ -10,7 +10,7 @@
                 <span class="sales-board-line-left">购买数量</span>
               </el-col>
               <el-col :span="12" class="sales-board-line-right ">
-                <el-input-number v-model="form.buyNum" size="mini" :min="1" :max="10"
+                <el-input-number v-model="buyNum" size="mini" :min="1" :max="10"
                                  label="购买数量" @change="handleChange"></el-input-number>
               </el-col>
             </el-row>
@@ -25,17 +25,7 @@
               </el-col>
             </el-row>
           </div>
-          <div class="sales-board-line">
-            <el-row :gutter="20">
-              <el-col :span="12">
-                <span class="sales-board-line-left">配送费</span>
-              </el-col>
-              <el-col :span="12">
-                <span class="sales-board-line-right">¥{{form.deliveryCost}}元</span>
-              </el-col>
-            </el-row>
-          </div>
-          <div class="sales-board-line">
+          <!--<div class="sales-board-line">
             <el-row :gutter="20">
               <el-col :span="12">
                 <span class="sales-board-line-left total">合计：</span>
@@ -44,24 +34,23 @@
                 <span class="sales-board-line-right toralPrice">¥{{ form.orderCount }}元</span>
               </el-col>
             </el-row>
-          </div>
+          </div>-->
           <div class="bottom ">
             <div class="sales-board-line">
               <el-row :gutter="20">
-                <el-col :span="8">&nbsp
+                <el-col :span="12">&nbsp;
                 </el-col>
-                <el-col :span="16">
-                  优惠券：
-                  <v-selection :selections="bounceList" :selectedValue="form.bounceListSelected"
-                               @get-selected-data="getbounceListData"></v-selection>
+                <el-col :span="12">
+                  <el-button type="danger" icon="el-icon-goods" class="addToCart" @click="add()">加入购物车</el-button>
                 </el-col>
               </el-row>
             </div>
           </div>
         </el-card>
       </el-col>
-      <el-col :span="11" style="margin: 20px">
-        <el-form ref="form" :model="form" label-width="120px">
+      <el-col :span="9" style="margin: 20px">
+        <cart></cart>
+        <!--<el-form ref="form" :model="form" label-width="120px">
           <el-form-item label="送餐城市">
             <el-cascader :options="allCities" v-model="form.citySelected" :props="props"
                          expand-trigger="hover" @change="cityHandleChange"></el-cascader>
@@ -106,11 +95,11 @@
                        @click="showPayDialog('submitOrder')">提交订单
             </el-button>
           </el-form-item>
-        </el-form>
+        </el-form>-->
       </el-col>
     </el-row>
 
-    <my-dialog :dialogshow="isShowPayDialog" :title="buyDetailTitle" :widthDialog="'60%'"
+    <!--<my-dialog :dialogshow="isShowPayDialog" :title="buyDetailTitle" :widthDialog="'60%'"
                @cancel-dialog="closePayDialog">
       <el-table :data="tableData" style="width: 100%">
         <el-table-column type="expand">
@@ -166,25 +155,30 @@
                  style="background-color: #ff5722;color:#faffdf;position: relative;right: -85%;margin-top: 10px"
                  @click="confirmBuy('submitOrder')">确认提交订单
       </el-button>
-    </my-dialog>
-    <my-dialog :dialogshow="isShowResDialog" :title="resTitle" :widthDialog="'30%'"
-               @cancel-dialog="closeResDialog">
-      <i v-if="isSuccessRes" class="el-icon-circle-check-outline"><span>&nbsp;{{resMessage}}</span></i>
-      <i v-if="!isSuccessRes" class="el-icon-circle-close-outline"><span>&nbsp;{{resMessage}}</span></i>
-    </my-dialog>
+    </my-dialog>-->
+    <!--    <my-dialog :dialogshow="isShowResDialog" :title="resTitle" :widthDialog="'30%'"
+                   @cancel-dialog="closeResDialog">
+          <i v-if="isSuccessRes" class="el-icon-circle-check-outline"><span>&nbsp;{{resMessage}}</span></i>
+          <i v-if="!isSuccessRes" class="el-icon-circle-close-outline"><span>&nbsp;{{resMessage}}</span></i>
+        </my-dialog>-->
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   import VSelection from '../../components/base/selection'
   import MyDialog from '../../components/base/dialog'
-  import BankChooser from '../../components/bankChooser'
+  //  import BankChooser from '../../components/bankChooser'
+  //  import OrderSubmit from './orderSubmit.vue'
+  import Cart from './cart.vue'
+  import { Toast, MessageBox } from 'mint-ui'
 
   export default {
     components: {
       VSelection,
       MyDialog,
-      BankChooser
+      Cart
+//      BankChooser,
+//      OrderSubmit
     },
     data () {
       return {
@@ -196,61 +190,6 @@
         orderSubmitTitle: '订单提交',
         buyDetailTitle: '购物车详情',
         price: 0,
-        bounceList: [
-          {
-            label: '请选择',
-            value: 0,
-            disabled: false
-          },
-          {
-            label: '全场8.8折',
-            value: 1,
-            disabled: false
-          },
-          {
-            label: '满30减5元',
-            value: 2,
-            disabled: false
-          },
-          {
-            label: '满88元减20元',
-            value: 3,
-            disabled: false
-          }
-        ],
-        allCities: [], // 城市列表
-        props: {  // 城市key转换
-          value: 'label',
-          children: 'cities'
-        },
-        payWayList: [  // 支付方式列表
-          {
-            label: '在线付款',
-            value: 0
-          },
-          {
-            label: '餐到付款',
-            value: 1
-          }
-        ],
-        form: {
-          foodName: '', // 食品名称
-          foodPrice: 0, // 食品价格
-          deliveryCost: 3, // 配送费
-          buyNum: 1,  // 购买的数量
-          orderCount: 0, // 订单总金额
-          bounceListSelected: 0, // 优惠券
-          bounceCount: 0, // 优惠金额
-          citySelected: [], // 被选择的城市
-          cityToString: '', // 被选择的城市
-          detailAddress: '',  // 送餐地址
-          mobile: '', // 联系电话
-          detailNote: '',  // 买家留言
-          payWaySelected: '',  // 选中的支付方式
-          date1: '',  // 选择日期
-          date2: '',  // 选择时间
-          delivery: false  // 是否及时配送
-        },
         imgMap: {
           '/detail/zou/zou1': require('../../assets/images/zou1.jpg'),
           '/detail/zou/zou2': require('../../assets/images/zou2.jpg'),
@@ -300,7 +239,8 @@
         bankId: null,
         orderId: null,
         isShowCheckOrder: false,
-        tableData: []
+        tableData: [],
+        buyNum: 1  // 购买数量
       }
     },
     watch: {
@@ -310,18 +250,9 @@
           this.getFoodList()
         }
         this.initBuyNum()
-        this.init()
       }
     },
     methods: {
-      init () {
-        this.foodName.citySelected = []
-        this.foodName.detailAddress = ''
-        this.foodName.mobile = ''
-        this.foodName.detailNote = ''
-        this.foodName.date1 = ''
-        this.foodName.date2 = ''
-      },
       closePayDialog (data) {
         this.isShowPayDialog = data
       },
@@ -334,19 +265,6 @@
       closeOrderSubmitDialog (data) {
         this.orderSubmitDialog = data
       },
-      getbounceListData (data) {
-        this.form.bounceListSelected = data
-        if (data === 1) {
-          this.form.orderCount = parseInt((this.form.foodPrice * this.form.buyNum * 0.88 + 3) * 100) / 100
-        } else if (data === 2) {
-          this.form.orderCount = this.form.foodPrice * this.form.buyNum - 5 + 3
-        } else if (data === 3) {
-          this.form.orderCount = this.form.foodPrice * this.form.buyNum - 20 + 3
-        } else {
-          this.form.orderCount = this.form.foodPrice * this.form.buyNum + 3
-        }
-        this.form.bounceCount = Math.floor((this.form.foodPrice * this.form.buyNum + 3 - this.form.orderCount) * 10) / 10
-      },
       onParamChange (attr, val) {
         this[attr] = val
         this.getPrice()
@@ -356,43 +274,6 @@
           .then((res) => {
             this.price = res.data.getPriceRes.amount
           })
-      },
-      showPayDialog (type) {
-        if (this.form.citySelected.length === 0) {
-          this.isSuccessRes = false
-          this.resTitle = '提示'
-          this.resMessage = '请选择城市！'
-          this.isShowResDialog = true
-          return false
-        } else if (this.form.detailAddress === '') {
-          this.isSuccessRes = false
-          this.resTitle = '提示'
-          this.resMessage = '请填写详细地址！'
-          this.isShowResDialog = true
-          return false
-        } else if (this.mobileErr.status === false) {
-          this.isSuccessRes = false
-          this.resTitle = '提示'
-          this.resMessage = '请输入正确的手机号码！'
-          this.isShowResDialog = true
-          return false
-        } else if (this.form.delivery === false && (this.form.date1 === '' || this.form.date2 === '')) {
-          this.isSuccessRes = false
-          this.resTitle = '提示'
-          this.resMessage = '请选择送餐时间！'
-          this.isShowResDialog = true
-          return false
-        }
-        if (this.user == null) {
-          this.isSuccessRes = false
-          this.resTitle = '提示'
-          this.resMessage = '请登录后再操作！'
-          this.isShowResDialog = true
-          return false
-        }
-        this.tableData = []
-        this.tableData.push(this.form)
-        this.isShowPayDialog = true
       },
       hideCheckOrder () {
         this.isShowCheckOrder = false
@@ -419,15 +300,6 @@
             console.log(errorRes)
           })
       },
-      getCities () {
-        this.$http.get('/api/getCities').then(
-          (response) => {
-            this.allCities = response.data.getCitiesRes
-          },
-          (errorRes) => {
-            console.log(errorRes)
-          })
-      },
       getFoodList () {
         this.$http.get('/api/productList').then(
           (response) => {
@@ -435,9 +307,6 @@
             for (var i = 0; i < this.foodList.length; i++) {
               if (this.foodList[i].path === this.$route.params.foodName) {
                 this.foodDetail = this.foodList[i]
-                this.form.foodName = this.foodList[i].name
-                this.form.foodPrice = this.foodList[i].price
-                this.form.orderCount = this.foodList[i].price + 3
               }
             }
           },
@@ -448,78 +317,43 @@
       // 购买数量改变时
       handleChange (value) {
         if (typeof value === 'undefined') {
-          this.form.buyNum = 1
+          this.buyNum = 1
         } else {
-          this.form.buyNum = value
+          this.buyNum = value
         }
-        this.form.orderCount = parseInt(this.form.deliveryCost) + this.form.buyNum * parseInt(this.form.foodPrice)
-        this.checkCanUseBounce()
       },
       initBuyNum () {
-        this.form.buyNum = 1
+        this.buyNum = 1
       },
-      cityHandleChange (value) {
-        this.form.citySelected = value
-        var cityToString = ''
-        for (var i = 0; i < value.length; i++) {
-          cityToString += value[i] + '  '
-        }
-        this.form.cityToString = cityToString
-      },
-      // 校验是否可以使用优惠券
-      checkCanUseBounce () {
-        var actPrice = 0
-        if (this.form.foodPrice === 0) {
-          actPrice = 0
+      // 点击按钮时，首先判断该商品是否在购物车已存在，如果存在则不再加入
+      add () {
+        var idExist = this.$store.state.carts.find((todo) => {
+          return todo.name === this.foodDetail.name
+        })
+
+        if (!idExist) {
+          var data = {
+            name: this.foodDetail.name,
+            price: this.foodDetail.price,
+            path: this.foodDetail.path,
+            src: this.foodDetail.src,
+            buyNum: this.buyNum
+          }
+          this.$store.commit('addcarts', data)
+          Toast({
+            message: '加入购物车成功！', iconClass: 'iconfont icon-goumaichenggong-copy', duration: 950
+          })
         } else {
-          actPrice = this.form.buyNum * this.form.foodPrice
+          MessageBox('提示', '商品已存在购物车')
         }
-        if (actPrice < 30) {
-          this.form.bounceListSelected = 0
-          this.bounceList[2].disabled = true
-          this.bounceList[3].disabled = true
-        } else if (actPrice >= 30 && actPrice < 88) {
-          this.form.bounceListSelected = 0
-          this.bounceList[3].disabled = true
-          this.bounceList[2].disabled = false
-        } else {
-          this.bounceList[3].disabled = false
-          this.bounceList[2].disabled = false
-        }
-      },
-      cascaderHandleChange (value) {
-        console.log(value)
       }
     },
-    mounted () {
-      this.form.payWaySelected = this.payWayList[0].label
-    },
     created () {
-      this.getCities()
       this.getFoodList()
-      this.checkCanUseBounce()
     },
     computed: {
       foodImg () {
         return this.imgMap[this.$route.path]
-      },
-      mobileErr () {
-        let errorText, status
-        if (!(/^1[34578]\d{9}$/.test(this.form.mobile))) {
-          status = false
-          errorText = '手机号码格式不正确'
-        } else {
-          status = true
-          errorText = ''
-        }
-        if (!this.mobileFlag) {
-          errorText = ''
-          this.mobileFlag = true
-        }
-        return {
-          status,
-          errorText
-        }
       },
       user () {
         return this.$store.state.user
@@ -590,5 +424,14 @@
     margin-right: 0;
     margin-bottom: 0;
     width: 50%;
+  }
+
+  .goToBuy {
+    margin-left: 30px;
+  }
+
+  .addToCart {
+    background-color: #ff5722;
+    color: #faffdf
   }
 </style>
