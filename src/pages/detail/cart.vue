@@ -41,7 +41,7 @@
           <a href="javascript:void(0);" @click="settlement">清空购物车</a>
         </div>
         <div class="Settlementtwo">
-          <router-link :to="{name:'Home'}">提交订单</router-link>
+          <router-link :to="{path:'/orderSubmit'}">提交订单</router-link>
         </div>
       </div>
     </div>

@@ -10,6 +10,7 @@ const store = new Vuex.Store({
     goodDetails: localStorage['goodDetails'] ? JSON.parse(localStorage['goodDetails']) : [],
     carts: localStorage['carts'] ? JSON.parse(localStorage['carts']) : [],
     orders: localStorage['orders'] ? JSON.parse(localStorage['orders']) : [],
+    address: localStorage['address'] ? JSON.parse(localStorage['address']) : [],
     user: null
   },
   mutations: {
@@ -59,6 +60,18 @@ const store = new Vuex.Store({
       } else {
         state.carts[index].buyNum--
       }
+    },
+    // 保存地址
+    saveAddress (state, data) {
+      state.address.push(data)
+      localStorage.setItem('address', JSON.stringify(state.address))
+    },
+    // 删除地址
+    delAddress (state, index) {
+      MessageBox.confirm('确定删除该地址么？').then(action => {
+        state.address.splice(index, 1)
+        localStorage.setItem('address', JSON.stringify(state.address))
+      })
     }
   },
   getters: {

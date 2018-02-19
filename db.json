@@ -61,21 +61,21 @@
           "name": "皮蛋瘦肉粥",
           "path": "zou2",
           "price": 8,
-          "src": "/static/images/zou2.jpg'",
+          "src": "http://www.dfjb.com.cn/ImgFile/120201/171409747_961944.png",
           "bigSrc":"http://www.dfjb.com.cn/ImgFile/120201/171404_605076.jpg"
         },
         {
           "name": "蜜豆杂粮粥",
           "path": "zou3",
           "price": 6,
-          "src": "/static/images/zou3.jpg",
+          "src": "http://www.dfjb.com.cn/ImgFile/131201/223836140_565828.png",
           "bigSrc":"http://www.dfjb.com.cn/ImgFile/131210/174432_425481.jpg"
         },
         {
           "name": "雪笋嫩鸡粥",
           "path": "zou4",
           "price": 6,
-          "src": "/static/images/zou4.jpg",
+          "src": "http://www.dfjb.com.cn/ImgFile/121104/220900357_047564.png",
           "bigSrc":"http://www.dfjb.com.cn/ImgFile/121104/220819_334908.jpg"
         }
       ]
@@ -355,8 +355,8 @@
           "name": "招牌奶茶",
           "path": "yp5",
           "price": 12,
-          "src": "http://www.dfjb.com.cn/ImgFile/130527/104607_246382.jpg",
-          "bigSrc":"http://www.dfjb.com.cn/ImgFile/130526/224628269_885790.png"
+          "src": "http://www.dfjb.com.cn/ImgFile/130526/224628269_885790.png",
+          "bigSrc":"http://www.dfjb.com.cn/ImgFile/130527/104607_246382.jpg"
         },
         {
           "name": "芒果大果粒沁饮",

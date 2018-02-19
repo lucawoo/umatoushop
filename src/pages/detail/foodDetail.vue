@@ -190,49 +190,6 @@
         orderSubmitTitle: '订单提交',
         buyDetailTitle: '购物车详情',
         price: 0,
-        imgMap: {
-          '/detail/zou/zou1': require('../../assets/images/zou1.jpg'),
-          '/detail/zou/zou2': require('../../assets/images/zou2.jpg'),
-          '/detail/zou/zou3': require('../../assets/images/zou3.jpg'),
-          '/detail/zou/zou4': require('../../assets/images/zou4.jpg'),
-          '/detail/zhengdian/zd1': require('../../assets/images/zd1.jpg'),
-          '/detail/zhengdian/zd2': require('../../assets/images/zd2.jpg'),
-          '/detail/zhengdian/zd3': require('../../assets/images/zd3.jpg'),
-          '/detail/miantiao/mt1': require('../../assets/images/mt1.jpg'),
-          '/detail/miantiao/mt2': require('../../assets/images/mt2.jpg'),
-          '/detail/miantiao/mt3': require('../../assets/images/mt3.jpg'),
-          '/detail/miantiao/mt4': require('../../assets/images/mt4.jpg'),
-          '/detail/miantiao/mt5': require('../../assets/images/mt5.jpg'),
-          '/detail/miantiao/mt6': require('../../assets/images/mt6.jpg'),
-          '/detail/miantiao/mt7': require('../../assets/images/mt7.jpg'),
-          '/detail/fanshi/fan1': require('../../assets/images/fan1.jpg'),
-          '/detail/fanshi/fan2': require('../../assets/images/fan2.jpg'),
-          '/detail/fanshi/fan3': require('../../assets/images/fan3.jpg'),
-          '/detail/fanshi/fan4': require('../../assets/images/fan4.jpg'),
-          '/detail/xiaocai/xc1': require('../../assets/images/xcc1.jpg'),
-          '/detail/xiaocai/xc2': require('../../assets/images/xcc2.jpg'),
-          '/detail/xiaocai/xc3': require('../../assets/images/xcc3.jpg'),
-          '/detail/xiaocai/xc4': require('../../assets/images/xcc4.jpg'),
-          '/detail/tang/tang1': require('../../assets/images/tang1.jpg'),
-          '/detail/tang/tang2': require('../../assets/images/tang2.jpg'),
-          '/detail/xiaochi/xc1': require('../../assets/images/xc1.jpg'),
-          '/detail/xiaochi/xc2': require('../../assets/images/xc2.jpg'),
-          '/detail/xiaochi/xc3': require('../../assets/images/xc3.jpg'),
-          '/detail/xiaochi/xc4': require('../../assets/images/xc4.jpg'),
-          '/detail/xiaochi/xc5': require('../../assets/images/xc5.jpg'),
-          '/detail/xiaochi/xc6': require('../../assets/images/xc6.jpg'),
-          '/detail/xiaochi/xc7': require('../../assets/images/xc7.jpg'),
-          '/detail/xiaochi/xc8': require('../../assets/images/xc8.jpg'),
-          '/detail/xiaochi/xc9': require('../../assets/images/xc9.jpg'),
-          '/detail/xiaochi/xc10': require('../../assets/images/xc10.jpg'),
-          '/detail/yinpin/yp1': require('../../assets/images/yp1.jpg'),
-          '/detail/yinpin/yp2': require('../../assets/images/yp2.jpg'),
-          '/detail/yinpin/yp3': require('../../assets/images/yp3.jpg'),
-          '/detail/yinpin/yp4': require('../../assets/images/yp4.jpg'),
-          '/detail/yinpin/yp5': require('../../assets/images/yp5.jpg'),
-          '/detail/yinpin/yp6': require('../../assets/images/yp6.jpg'),
-          '/detail/yinpin/yp7': require('../../assets/images/yp7.jpg')
-        },
         isShowResDialog: false,
         isShowPayDialog: false,
         orderSubmitDialog: false,
@@ -341,7 +298,7 @@
           }
           this.$store.commit('addcarts', data)
           Toast({
-            message: '加入购物车成功！', iconClass: 'iconfont icon-goumaichenggong-copy', duration: 950
+            message: '加入购物车成功！', iconClass: 'iconfont icon-success', duration: 950
           })
         } else {
           MessageBox('提示', '商品已存在购物车')
@@ -353,7 +310,8 @@
     },
     computed: {
       foodImg () {
-        return this.imgMap[this.$route.path]
+//        return this.imgMap[this.$route.path]
+        return this.foodDetail.bigSrc
       },
       user () {
         return this.$store.state.user
