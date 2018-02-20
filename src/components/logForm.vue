@@ -27,6 +27,8 @@
 </template>
 
 <script>
+  import { Toast } from 'mint-ui'
+
   export default {
     created () {
       this.blur()
@@ -36,9 +38,7 @@
         responseRes: {
           dialogVisible: false,
           alertDialogVisible: false,
-          resMessage: '',
-          showErrormsg: false,
-          isSuccessRes: false
+          showErrormsg: false
         },
         form: {
           usernameModel: '',
@@ -72,7 +72,6 @@
               var i = 0
               var flag = false
               for (i = 0; i < usersDataRes.length; i++) {
-                console.log(usersDataRes[i].username + ',' + (this.form.usernameModel + '@umatou.com'))
                 if (usersDataRes[i].username === (this.form.usernameModel + '@umatou.com') && usersDataRes[i].password === this.form.passwordModel) {
                   flag = true
                   this.dialogVisible = false
@@ -82,12 +81,9 @@
               }
               this.responseRes.dialogVisible = false
               this.responseRes.alertDialogVisible = true
-              console.log(usersDataRes)
-              console.log(flag)
               if (flag) {
                 this.$store.commit('isLogin', usersDataRes[i])
-                this.responseRes.resMessage = '登录成功！'
-                this.responseRes.isSuccessRes = true
+                Toast({message: '登录成功！', iconClass: 'el-icon-success', duration: 1200})
                 this.$emit('reg-response-res', this.responseRes)
                 this.$router.push({path: ''})
               } else {
@@ -103,7 +99,6 @@
   }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   #password input, #username div {
     background-color: #fff;

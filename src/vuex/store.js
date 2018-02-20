@@ -23,9 +23,14 @@ const store = new Vuex.Store({
       state.carts.push(data)
       localStorage.setItem('carts', JSON.stringify(state.carts))
     },
-    // 购物之后加入订单
+    // 购物之后加入订单,先加入的订单放在最前面
     addorder: (state, data) => {
-      state.orders.push(data)
+      var newOrdersList = []
+      newOrdersList.push(data)
+      for (var i = 0; i < state.orders.length; i++) {
+        newOrdersList.push(state.orders[i])
+      }
+      state.orders = newOrdersList
       localStorage.setItem('orders', JSON.stringify(state.orders))
     },
     // 删除购物车商品
@@ -35,7 +40,7 @@ const store = new Vuex.Store({
         localStorage.setItem('carts', JSON.stringify(state.carts))
       })
     },
-    // 购物车结算
+    // 清空购物车
     settlement: (state, data) => {
       state.carts = []
       localStorage.setItem('carts', JSON.stringify(state.carts))
@@ -61,9 +66,14 @@ const store = new Vuex.Store({
         state.carts[index].buyNum--
       }
     },
-    // 保存地址
+    // 保存地址,新增的地址放在集合的第一个元素上
     saveAddress (state, data) {
-      state.address.push(data)
+      var newAddressList = []
+      newAddressList.push(data)
+      for (var i = 0; i < state.address.length; i++) {
+        newAddressList.push(state.address[i])
+      }
+      state.address = newAddressList
       localStorage.setItem('address', JSON.stringify(state.address))
     },
     // 删除地址

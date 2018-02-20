@@ -27,7 +27,8 @@
     <div class="index-right">
       <slide-show :slides="slides"></slide-show>
       <el-row>
-        <el-col style="width: 30.5%;" v-for="(item, index) in boardList" :key="item.title" :offset="index%3 == 0 ? 0 : 1">
+        <el-col style="width: 30.5%;" v-for="(item, index) in boardList" :key="item.title"
+                :offset="index%3 == 0 ? 0 : 1">
           <div style="height: 20px;" v-if="index > 2"></div>
           <el-card :body-style="{ padding: '0px' }">
             <img :src="item.src" class="image">
@@ -35,8 +36,8 @@
               <p class="board-title">{{ item.title }}</p>
               <p class="board-price">{{ item.price }}</p>
               <div class="bottom clearfix">
-                 <router-link :to="{path:item.href}"  active-class="active" :key="item.path">
-                   <el-button style="float: right;" size="small">开始订餐</el-button>
+                <router-link :to="{path:item.href}" active-class="active" :key="item.path">
+                  <el-button style="float: right;" size="small">开始订餐</el-button>
                 </router-link>
               </div>
             </div>
@@ -56,17 +57,30 @@
       slideShow
     },
     created: function () {
-      this.$http.get('api/getNewsList')
-        .then((res) => {
-          this.newsList = res.data.getNewsListRes
-        }, (err) => {
-          console.log(err)
-        })
+      this.getBoardList()
+      this.getNewsList()
+    },
+    methods: {
+      getBoardList () {
+        this.$http.get('api/getBorderList').then(
+          (res) => {
+            this.boardList = res.data.boardListRes
+          }, (err) => { console.log(err) })
+      },
+      getNewsList () {
+        this.$http.get('api/getNewsList')
+          .then((res) => {
+            this.newsList = res.data.getNewsListRes
+          }, (err) => {
+            console.log(err)
+          })
+      }
     },
     data () {
       return {
         invTime: 2000,
         newsList: [],
+        boardList: [],
         slides: [
           {
             src: require('../assets/slideShow/affix1.jpg'),
@@ -97,62 +111,6 @@
             src: require('../assets/slideShow/affix6.jpg'),
             title: 'xxx4',
             href: 'detail/forecast'
-          }
-        ],
-        boardList: [
-          {
-            title: '黑糖珍珠红豆沙',
-            src: require('../assets/boardList/board1.jpg'),
-            price: '12.0元/份',
-            href: 'detail/xiaochi/xc5'
-          },
-          {
-            title: '鲜汤小笼',
-            src: require('../assets/boardList/board2.jpg'),
-            price: '9.50元/份',
-            href: 'detail/zhengdian/zd1'
-          },
-          {
-            title: '皮蛋瘦肉粥',
-            src: require('../assets/boardList/board3.jpg'),
-            price: '8.0元/份',
-            href: 'detail/zou/zou2'
-          },
-          {
-            title: '肉松油条鸡蛋饭团',
-            src: require('../assets/boardList/board4.jpg'),
-            price: '7.50元/份',
-            href: 'detail/xiaochi/xc10'
-          },
-          {
-            title: '鲜肉小馄饨',
-            src: require('../assets/boardList/board5.jpg'),
-            price: '11.0元/份',
-            href: 'detail/miantiao/mt7'
-          },
-          {
-            title: '原蛊虫草花炖鸡汤',
-            src: require('../assets/boardList/board6.jpg'),
-            price: '18.0元/份',
-            href: 'detail/tang/tang2'
-          },
-          {
-            title: '原汁鸡汤砂锅面',
-            src: require('../assets/boardList/board7.jpg'),
-            price: '18.0元/份',
-            href: 'detail/miantiao/mt6'
-          },
-          {
-            title: '狠大照烧烤鸡腿饭',
-            src: require('../assets/boardList/board8.jpg'),
-            price: '22.0元/份',
-            href: 'detail/fanshi/fan4'
-          },
-          {
-            title: '台式串串肠',
-            src: require('../assets/boardList/board9.jpg'),
-            price: '8.0元/份',
-            href: 'detail/xiaochi/xc4'
           }
         ],
         productList: {
@@ -247,7 +205,7 @@
     width: 900px;
   }
 
-  .index-left-block,.airFlight {
+  .index-left-block, .airFlight {
     margin: 15px;
     background: #fff;
     box-shadow: 0 0 1px #ddd;
@@ -277,10 +235,12 @@
   .index-left-block li {
     padding: 10px;
   }
+
   .index-left-block li:hover {
     cursor: pointer;
     color: #ff0000;
   }
+
   .index-board-list {
     overflow: hidden;
   }
@@ -331,7 +291,7 @@
     margin-top: 20px;
   }
 
-  .lastest-news,.fly {
+  .lastest-news, .fly {
     min-height: 212px;
   }
 
@@ -362,7 +322,6 @@
     white-space: nowrap;
   }
 
-
   .time {
     font-size: 13px;
     color: #999;
@@ -392,16 +351,19 @@
   .clearfix:after {
     clear: both
   }
-  .board-price{
+
+  .board-price {
     color: #df6700;
   }
-  .board-title{
+
+  .board-title {
     font-size: 16px;
     color: #ae4600;
     font-weight: bold;
     margin-bottom: 3px;
     display: block;
   }
+
   button.el-button.el-button--default.el-button--small {
     background-color: #e32402;
     color: #fff;

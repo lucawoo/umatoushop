@@ -2,14 +2,18 @@
   <div>
     <h1 class="address-title">收货地址</h1>
     <div>
-      <el-button type="text" @click="addAddress" class="address-addAddress" >
+      <el-button type="text" @click="addAddress" class="address-addAddress" v-if="addresses.length">
         +添加新地址
       </el-button>
-      <order-address :showDialog="isShowResDialog" @cancel-dialog="closeResDialog" @save-address-success="saveAddressSuccess"></order-address>
+      <el-button type="text" @click="addAddress" class="checkout-noaddress" v-if="!addresses.length">
+        +添加新地址
+      </el-button>
+      <order-address :showDialog="isShowResDialog" @cancel-dialog="closeResDialog"
+                     @save-address-success="saveAddressSuccess"></order-address>
       <div class="addressMain" v-if="addresses.length">
         <ul>
           <li v-for="(address,index) in addresses">
-            <el-radio v-model="form.addressSelected" :label="address" border class="address-radio">{{address}}
+            <el-radio v-model="form.addressSelected" :label="address" border class="address-radio" fill="'#ff9c00'">{{address}}
               <a href="javascript:;" @click="delAddress(index)">X</a>
             </el-radio>
           </li>
@@ -19,7 +23,7 @@
     <h1 class="payway-title">付款方式</h1>
     <p class="payway-subTitle">推荐使用在线支付，不用找零，优惠更多</p>
     <div>
-      <el-radio-group v-model="form.payWaySelected">
+      <el-radio-group v-model="form.payWaySelected" :fill="'#ff822a'">
         <el-radio-button label="在线支付"></el-radio-button>
         <el-radio-button label="货到付款"></el-radio-button>
       </el-radio-group>
@@ -153,25 +157,32 @@
           message = '订单已提交！'
           orderType = '货到付款'
         }
-        console.log(flag)
         Toast({message: message, iconClass: 'el-icon-success', duration: 1200})
+        var date = new Date()
         var data = {
-          orderId: 'UMT' + new Date().getTime(),
-          orderTail: carts,
-          orderType: orderType
+          orderId: 'UMT' + date.getTime(),
+          orderDetail: carts,
+          orderType: orderType,
+          orderTotal: total,
+          orderDate: date.getFullYear() + '年' + (date.getMonth() + 1) + '月' + date.getDate() + '日'
         }
+        // 保存订单到vuex
         this.$store.commit('addorder', data)
+        // 清空购物车记录
+        this.$store.commit('settlement', data)
+        // 跳转到订单详情页
+        this.$router.push('/orderList')
       },
       // 地址保存成功后默认勾选第一个地址
       saveAddressSuccess () {
-        alert(111)
-        if (this.addressList.length > 0) {
-          this.form.addressSelected = this.addressList[0]
+        if (this.$store.state.address.length > 0) {
+          this.form.addressSelected = this.$store.state.address[0]
         }
       }
     },
     mounted () {
       this.form.payWaySelected = this.payWayList[0].label
+      this.saveAddressSuccess()
     }
   }
 </script>
@@ -190,7 +201,26 @@
   }
 
   .address-addAddress {
-    color: #f26e25;
+    position: relative;
+    left: 80%;
+    color: #f2321d;
+    height: 30px;
+    text-align: right;
+    font-size: 17px;
+    margin-bottom: 14px;
+  }
+
+  .address-addAddress :hover {
+    color: #f2246d;
+  }
+
+  .checkout-noaddress {
+    margin: 0;
+    line-height: 62px;
+    width: 100%;
+    background: #f1f1f1;
+    text-align: center;
+    color: #666;
   }
 
   .addressMain li {

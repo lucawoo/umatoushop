@@ -10,13 +10,13 @@ const portfinder = require('portfinder')
 // 首先
 const express = require('express')
 const app = express()
-var appData = require('../db.json')// 加载本地数据文件
+var appData = require('../static/db.json')// 加载本地数据文件
 var newsList = appData.getNewsList// 获取对应的本地数据
 var login = appData.login
 var productList = appData.productList
 var createOrder = appData.createOrder
 var cities = appData.cities
-var tableData = appData.tableData
+var boardList = appData.boardList
 var apiRoutes = express.Router()
 app.use('/api', apiRoutes)
 
@@ -81,10 +81,10 @@ const devWebpackConfig = merge(baseWebpackConfig, {
           data: createOrder
         })
       })
-      app.get('/api/getTableData', (req, res) => {
+      app.get('/api/getBorderList', (req, res) => {
         res.json({
           errno: 0,
-          tableDataRes: tableData
+          boardListRes: boardList
         })
       })
     }

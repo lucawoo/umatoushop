@@ -298,7 +298,7 @@
           }
           this.$store.commit('addcarts', data)
           Toast({
-            message: '加入购物车成功！', iconClass: 'iconfont icon-success', duration: 950
+            message: '加入购物车成功！', iconClass: 'iconfont el-icon-success', duration: 950
           })
         } else {
           MessageBox('提示', '商品已存在购物车')

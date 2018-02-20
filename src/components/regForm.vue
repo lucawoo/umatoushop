@@ -33,6 +33,7 @@
 </template>
 
 <script>
+  import { Toast } from 'mint-ui'
   export default {
     created () {
       this.userNameBlur()
@@ -117,16 +118,13 @@
         this.form.passwordModel = ''
         this.form.checkPasswordModel = ''
         this.responseRes.dialogVisible = false
-        this.responseRes.alertDialogVisible = true
-        this.responseRes.resMessage = '注册成功！'
-        this.responseRes.isSuccessRes = true
+        Toast({message: '注册成功！', iconClass: 'el-icon-success', duration: 1200})
         this.$emit('reg-response-res', this.responseRes)
       }
     }
   }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   #password input, #username div, #checkPassword input {
     background-color: #fff;

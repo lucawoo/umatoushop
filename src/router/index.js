@@ -9,7 +9,8 @@ import News3 from '@/pages/news/news3.vue'
 import News4 from '@/pages/news/news4.vue'
 import AbourOur from '@/pages/abourOur.vue'
 import FoodDetail from '@/pages/detail/foodDetail.vue'
-import OrderList from '@/pages/detail/orderList.vue'
+import OrderList from '@/pages/orderList/orderList.vue'
+// import OrderList from '@/pages/detail/orderList.vue'
 import OrderSubmit from '@/pages/orderSubmit/orderSubmit.vue'
 Vue.use(Router)
 

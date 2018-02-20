@@ -7,7 +7,9 @@
         </router-link>
         <div class="head-nav">
           <ul>
-            <li style="cursor: default">欢迎访问优鲜码头</li>
+            <router-link :to="{path:'/'}">
+              <li>欢迎访问优鲜码头</li>
+            </router-link>
             <li class="nav-pile">&nbsp;</li>
             <li v-if="user != null" @click="quitLogin">退出</li>
             <li v-if="user != null" class="nav-pile">|</li>
@@ -47,14 +49,7 @@
     <!-- 注册 -->
     <my-dialog :dialogshow="regDialogVisible" :title="regTitle" :widthDialog="width"
                @confirm-dialog="confirmDialog" @cancel-dialog="cancelDialog">
-      <!--<reg-form @show-alertDialog="showAlertDoalog" @cancel-dialog="cancelDialog"></reg-form>-->
       <reg-form @reg-response-res="getRegResponseRes"></reg-form>
-    </my-dialog>
-    <!-- alert对话框 -->
-    <my-dialog :dialogshow="alertDialogVisible" title="提示" :widthDialog="'30%'"
-               @cancel-dialog="cancelDialog">
-      <i v-if="isSuccessRes" class="el-icon-circle-check-outline"><span>&nbsp;{{resMessage}}</span></i>
-      <i v-if="!isSuccessRes" class="el-icon-circle-close-outline"><span>&nbsp;{{resMessage}}</span></i>
     </my-dialog>
   </div>
 
@@ -76,14 +71,11 @@
         logDialogVisible: false,
         regDialogVisible: false,
         aboutDialogVisible: false,
-        alertDialogVisible: false,
         logTite: '登录',
         regTitle: '注册',
         aboutTite: '关于',
         name: '',
-        width: '50%',
-        isSuccessRes: false,
-        resMessage: ''
+        width: '50%'
       }
     },
     methods: {
@@ -91,18 +83,12 @@
         this.logDialogVisible = obj
         this.regDialogVisible = obj
         this.aboutDialogVisible = obj
-        this.alertDialogVisible = obj
       },
       cancelDialog (obj) {
         this.logDialogVisible = obj
         this.regDialogVisible = obj
         this.aboutDialogVisible = obj
-        this.alertDialogVisible = obj
       },
-      // hasLogin (obj) {
-      //   this.name = obj.data.username
-      //   this.loginSuccess = true
-      // },
       quitLogin () {
         this.$store.commit('isLogin', null)
         this.$router.push('/')
@@ -110,15 +96,9 @@
       getDialogWidth (newValue) {
         this.width = newValue
       },
-      // showAlertDoalog (obj) {
-      //   this.alertDialogVisible = obj
-      // }
       getRegResponseRes (obj) {
-        this.alertDialogVisible = obj.alertDialogVisible
         this.regDialogVisible = obj.dialogVisible
         this.logDialogVisible = obj.dialogVisible
-        this.resMessage = obj.resMessage
-        this.isSuccessRes = obj.isSuccessRes
       }
     },
     computed: {
