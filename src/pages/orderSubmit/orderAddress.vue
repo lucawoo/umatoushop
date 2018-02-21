@@ -22,8 +22,9 @@
         </el-form-item>
 
         <el-form-item label="联系电话：">
-          <el-input suffix-icon="el-icon-mobile-phone" v-model="form.mobile" class="addressInput"></el-input>
-          <span class="g-form-error">{{ mobileErr.errorText }}</span>
+          <el-input suffix-icon="el-icon-mobile-phone" v-model="form.mobile" class="addressInput"
+                    @blur="checkMobile()"></el-input>
+          <span class="g-form-error" v-if="mobileErrr">手机号码格式不正确</span>
         </el-form-item>
         <div class="btn-group">
           <el-button type="primary" class="addressBtn" @click="saveAddress">保存</el-button>
@@ -59,25 +60,6 @@
       },
       isShowResDialog () {
         return this.resDialog
-      },
-      /* 校验手机格式 */
-      mobileErr () {
-        let errorText, status
-        if (!(/^1[34578]\d{9}$/.test(this.form.mobile))) {
-          status = false
-          errorText = '手机号码格式不正确'
-        } else {
-          status = true
-          errorText = ''
-        }
-        if (!this.mobileFlag) {
-          errorText = ''
-          this.mobileFlag = true
-        }
-        return {
-          status,
-          errorText
-        }
       }
     },
     components: {
@@ -95,6 +77,7 @@
         resTitle: '',  // 结果对话框标题
         isSuccessRes: true, // 校验成功
         resMessage: '', // 结果对话框内容
+        mobileErrr: false, // 校验手机号码格式
         form: {
           name: '', // 姓名
           sex: '', // 性别
@@ -109,6 +92,14 @@
       this.getCities()
     },
     methods: {
+      /* 校验手机格式 */
+      checkMobile () {
+        if (!(/^1[34578]\d{9}$/.test(this.form.mobile))) {
+          this.mobileErrr = true
+        } else {
+          this.mobileErrr = false
+        }
+      },
       /* 关闭保存地址的对话框 */
       closeDialog (data) {
         this.$emit('cancel-dialog', data)
@@ -138,6 +129,8 @@
       },
       /* 保存地址 */
       saveAddress () {
+        /* 校验手机格式 */
+        this.checkMobile()
         // 校验数据
         var checkSuccess = this.checkDate()
         // 存入vuex
@@ -165,7 +158,7 @@
           this.resMessage = '请填写详细地址！'
           this.resDialog = true
           return false
-        } else if (this.mobileErr.status === false) {
+        } else if (this.mobileErrr) {
           this.isSuccessRes = false
           this.resTitle = '提示'
           this.resMessage = '请输入正确的手机号码！'

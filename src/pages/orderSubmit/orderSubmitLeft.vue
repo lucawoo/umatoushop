@@ -26,7 +26,7 @@
         return this.$store.getters.sum
       }
     },
-    created () {
+    mounted () {
       this.getCarts()
     },
     methods: {

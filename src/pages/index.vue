@@ -260,22 +260,6 @@
     padding-left: 120px;
   }
 
-  .index-board-car .index-board-item-inner {
-    background: url(../assets/images/1.png) no-repeat;
-  }
-
-  .index-board-loud .index-board-item-inner {
-    background: url(../assets/images/2.png) no-repeat;
-  }
-
-  .index-board-earth .index-board-item-inner {
-    background: url(../assets/images/3.png) no-repeat;
-  }
-
-  .index-board-hill .index-board-item-inner {
-    background: url(../assets/images/4.png) no-repeat;
-  }
-
   .index-board-item h2 {
     font-size: 18px;
     font-weight: bold;
