@@ -25,8 +25,9 @@
 # 项目预览
 :point_right: [在线预览]https://zl46547.github.io/umatou/#/<br>
 
-# 离线预览
-:point_right: [离线预览]https://zl46547.github.io/umatou/#/<br>
+# 注意事项
+如果没法预览项目，尝试请求接口:point_right: https://zl46547.github.io/javaUmatou/WebContent/db.json<br>
+如果没法访问该接口，请下载蓝灯翻墙
 
 # 基本功能
 * 首页轮播图效果
