@@ -29,6 +29,10 @@
 如果没法预览项目，尝试请求接口:point_right: https://zl46547.github.io/javaUmatou/WebContent/db.json<br>
 如果没法访问该接口，请下载蓝灯翻墙
 
+# 项目的账号密码
+账号：zl46547@umatou.com<br>
+密码：46547
+
 # 基本功能
 * 首页轮播图效果
 * 首页商品导航
